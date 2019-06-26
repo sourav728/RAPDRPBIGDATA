@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/status_report_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp10"
+    android:layout_marginTop="@dimen/dp5"
+    android:layout_marginEnd="@dimen/dp10"
+    android:layout_marginBottom="@dimen/dp5"
+    android:elevation="@dimen/dp4"
+    android:foreground="?android:selectableItemBackground"
+    app:cardCornerRadius="@dimen/dp5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.26"
+                android:text="Level"
+                android:textSize="@dimen/text16"
+                android:textStyle="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.26"
+                android:text="@string/semi_colon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16" />
+
+            <TextView
+                android:id="@+id/txt_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:textSize="@dimen/text16"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_month_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:textSize="@dimen/text14"
+                android:textColor="@color/red"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:drawableStart="@drawable/ic_person"
+                android:text="Installations"
+                android:textSize="@dimen/text16"
+                android:textStyle="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.95"
+                android:text="@string/semi_colon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16" />
+
+
+            <TextView
+                android:id="@+id/txt_installation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text16"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.26"
+                android:drawableStart="@drawable/rupees"
+                android:text="Opening Balance"
+                android:textSize="@dimen/text16"
+                android:textStyle="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.26"
+                android:text="@string/semi_colon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16" />
+
+
+            <TextView
+                android:id="@+id/txt_opening_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:textSize="@dimen/text16"
+                android:textColor="@color/light_pink"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:text="(In Crores)"
+                android:textSize="@dimen/text14"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.26"
+                android:drawableStart="@drawable/scale"
+                android:text="Consumed Units"
+                android:textSize="@dimen/text16"
+                android:textStyle="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.26"
+                android:text="@string/semi_colon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16" />
+
+
+            <TextView
+                android:id="@+id/txt_consumed_units"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:text="(In Crores)"
+                android:textSize="@dimen/text14"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_req_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.26"
+                android:drawableStart="@drawable/rupees"
+                android:text="Demand"
+                android:textSize="@dimen/text16"
+                android:textStyle="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.26"
+                android:text="@string/semi_colon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16" />
+
+            <TextView
+                android:id="@+id/txt_demand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/text16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:text="(In Crores)"
+                android:textSize="@dimen/text14"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lin_approved_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.26"
+                android:drawableStart="@drawable/rupees"
+                android:text="Net Payable"
+                android:textSize="@dimen/text16"
+                android:textStyle="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.26"
+                android:text="@string/semi_colon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16" />
+
+            <TextView
+                android:id="@+id/txt_net_payable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:textColor="@color/color_author"
+                android:textSize="@dimen/text16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:text="(In Crores)"
+                android:textSize="@dimen/text14"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_received_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.26"
+                android:drawableStart="@drawable/rupees"
+                android:text="Collection Amt"
+                android:textSize="@dimen/text16"
+                android:textStyle="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.26"
+                android:text="@string/semi_colon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16" />
+
+            <TextView
+                android:id="@+id/txt_collection_amt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:textColor="@color/green"
+                android:textSize="@dimen/text16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:text="(In Crores)"
+                android:textSize="@dimen/text14"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_management"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.26"
+                android:drawableStart="@drawable/rupees"
+                android:text="Closing Balance"
+                android:textSize="@dimen/text16"
+                android:textStyle="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.26"
+                android:text="@string/semi_colon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16" />
+
+            <TextView
+                android:id="@+id/txt_closing_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:text="(In Crores)"
+                android:textSize="@dimen/text14"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_Gap_amt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.26"
+                android:drawableStart="@drawable/rupees"
+                android:text="Gap b/w \nDMD-CA"
+                android:textSize="@dimen/text16"
+                android:textStyle="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.26"
+                android:text="@string/semi_colon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text16" />
+
+            <TextView
+                android:id="@+id/txt_gap_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:textColor="@color/color_author"
+                android:textSize="@dimen/text16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:text="(In Crores)"
+                android:textSize="@dimen/text14"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

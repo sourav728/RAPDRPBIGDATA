@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Summarization.UnBilled_Summerization.UnBilled_Summerization_Tariff_chart">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            layout="@layout/custom_toolbar" />
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:button="@drawable/checkbox_layout"
+            android:gravity="center"
+            android:text="Installation"
+            tools:ignore="HardcodedText" />
+        <android.support.design.button.MaterialButton
+            android:id="@+id/btn_apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox1"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:text="Apply Changes"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorPrimary"
+            android:theme="@style/MaterialComponentsAppTheme"
+            app:backgroundTint="@color/button_color"
+            app:cornerRadius="10dp"
+            app:rippleColor="@color/colorAccent"
+            app:strokeWidth="2dp"
+            tools:ignore="HardcodedText" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/btn_apply"
+            android:id="@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_marginBottom="20dp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@color/colorPrimary"
+        android:src="@drawable/ic_send"/>
+
+</android.support.design.widget.CoordinatorLayout>

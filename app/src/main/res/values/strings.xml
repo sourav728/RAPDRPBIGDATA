@@ -1,0 +1,111 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">R-APDRP BIG DATA</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Zoola Kapasi</string>
+    <string name="nav_header_subtitle">rapdrp@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string name="escom_name">Escom</string>
+    <string name="escom_zone">Zone</string>
+    <string name="escom_circle">Circle</string>
+    <string name="escom_division">Division</string>
+    <string name="escom_subdivision">Sub Division</string>
+    <string name="escom_tariff">Tariff</string>
+    <string name="acc_status">Account Status</string>
+    <string name="bill_status">Billed Status</string>
+    <string name="escom_time_period">Time Period</string>
+    <string name="From_date">From Date*</string>
+    <string name="To_date">To Date*</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">RAPDRP Analytics</string>
+    <string name="slide_1_desc">The easiest way to find the analytics Report</string>
+
+    <string name="slide_2_title">RAPDRP Dashboard</string>
+    <string name="slide_2_desc">Detailed dashboard of RAPDRP</string>
+
+    <string name="title_activity_main">Home</string>
+    <string name="billing_summary_tariff_wise">Tariff Wise Billing Summarization</string>
+    <string name="billing_summary_year_wise">Billing Summarization Year Wise</string>
+
+    <string name="payment_summary_tariff_wise" tools:ignore="ExtraTranslation">Payment Summarization Tariff Wise</string>
+    <string name="payment_summary_overall">Payment Summarization Overall</string>
+
+    <string name="customer_summary_tariff_wise">Customer Summarization Tariff Wise</string>
+    <string name="customer_summary_overall">Customer Summarization OverAll</string>
+    <string name="abnormal_summary_graph">Abnormal Summarization Graph</string>
+    <string name="subnormal_summary_graph">Subnormal Summarization Graph</string>
+
+    <string name="button_submit">Submit</string>
+
+    <string name="bar_name">Transaction Year</string>
+    <string name="assets_copy">Db file copied successfully</string>
+    <string name="text_view">TextView</string>
+
+    <string name="transaction_year">Transaction Year</string>
+    <string name="transaction_month">Transaction Month</string>
+    <string name="month">Month</string>
+    <string name="installation">Instalation</string>
+    <string name="billed_installation">Billed Installation</string>
+    <string name="abnormal_installation">Abnormal Installation</string>
+    <string name="subnormal_installation">Subnormal Installation</string>
+    <string name="consumedunit">Consumed Unit</string>
+    <string name="currentbillamt">Current Billed Amt.</string>
+    <string name="opening_balance">Opening Balance</string>
+    <string name="consumed_unit">Consumed Unit</string>
+    <string name="demand">Demand</string>
+    <string name="net_pay_amount">Net Pay Amt</string>
+    <string name="collection_amount">Collection Amt</string>
+    <string name="closing_balance_amount">Closing Amt</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="grand_total">Grand Total</string>
+    <string name="deposit_summarization">Deposit Summarization</string>
+    <string name="connection_type">Connection Type</string>
+    <string name="login_message">We just need to get a few details from you to get you signed up  to the service.</string>
+    <string name="year_and_month_wise">Year and Month Wise</string>
+    <string name="single_month_wise">Single Month Wise</string>
+    <string-array name="connection_type">
+        <item>TEMP DISCONNECTION</item>
+        <item>PERMANENT DISCONNECTION</item>
+    </string-array>
+
+    <string name="company_details">© 2019 Transvision Software &amp; Data Solutions Pvt Ltd.\n
+        All Rights Reserved\n<u>www.transvisionsolutions.com</u></string>
+    <string name="welcome_text"> WELCOME TO R-APDRP BIG DATA ANALYTICS REPORTING SYSTEM</string>
+    <string name="semi_colon">:</string>
+
+    <string-array name="account_status">
+        <item>All</item>
+        <item>ACTIVE</item>
+        <item>INACTIVE</item>
+        <item>PERM DISCON</item>
+        <item>TEMP DISCON</item>
+        <item>NULL</item>
+    </string-array>
+
+    <string-array name="billed_status">
+        <item>All</item>
+        <item>BILLED</item>
+        <item>UNBILLED</item>
+        <item>ONLY_IN_OB_CB</item>
+        <item>NOT MAPPED</item>
+    </string-array>
+
+    <string-array name="payment_status">
+        <item>All</item>
+        <item>PAID</item>
+        <item>NOT PAID</item>
+    </string-array>
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Summarization.Feeder_mapping_customer_Summarization.Customer_Summarization_Tariffwise_Chart">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:button="@drawable/checkbox_layout"
+        android:gravity="center"
+        android:text="Installation"
+        tools:ignore="HardcodedText" />
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/btn_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:text="Apply Changes"
+        android:textAllCaps="false"
+        android:textColor="@color/textColorPrimary"
+        android:theme="@style/MaterialComponentsAppTheme"
+        app:backgroundTint="@color/button_color"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/colorAccent"
+        app:strokeWidth="2dp"
+        tools:ignore="HardcodedText" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_apply"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chart1"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginBottom="8dp"
+                tools:ignore="MissingConstraints,ObsoleteLayoutParam" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

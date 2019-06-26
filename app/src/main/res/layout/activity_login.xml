@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background">
+        </FrameLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_bottom_16"
+                android:layout_marginTop="@dimen/margin_top_16"
+                android:paddingBottom="@dimen/padding_16"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_bottom_16"
+                    android:layout_marginLeft="@dimen/margin_left_16"
+                    android:layout_marginRight="@dimen/margin_right_16"
+                    android:layout_marginTop="@dimen/margin_top_16"
+                    android:alpha=".6"
+                    android:background="@drawable/black_border_fade"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_left_16"
+                        android:layout_marginRight="@dimen/margin_right_16"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/text_18"
+                        android:layout_marginBottom="@dimen/margin_bottom_8"
+                        android:layout_gravity="start"
+                        android:fontFamily="sans-serif-regular"
+                        android:text="Welcome !" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_left_16"
+                        android:layout_marginRight="@dimen/margin_right_16"
+                        android:textColor="@color/textColorPrimary"
+                        android:gravity="start"
+                        android:textSize="@dimen/text_16"
+                        android:layout_gravity="start"
+                        android:lineSpacingExtra="@dimen/lineSpacingExtra_4"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/login_message" />
+
+
+                    <!--Name Details-->
+
+
+                    <EditText
+                        android:id="@+id/reg_name_et"
+                        style="@style/Font_family_light"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:drawableLeft="@drawable/ic_person"
+                        android:drawablePadding="@dimen/padding_8"
+                        android:hint="Name"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:padding="@dimen/padding_16"
+                        android:textColor="@color/textColorPrimary"
+                        android:textColorHint="@color/textColorPrimary"
+                        android:textSize="@dimen/text_18" />
+
+
+                    <View
+                        style="@style/Normal_Margin_Style"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_1"
+                        android:background="@color/view_line" />
+
+
+                    <EditText
+                        android:id="@+id/reg_password_et"
+                        style="@style/Font_family_light"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:drawableLeft="@drawable/password"
+                        android:drawablePadding="@dimen/padding_8"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:padding="@dimen/padding_16"
+                        android:textColor="@color/textColorPrimary"
+                        android:textColorHint="@color/textColorPrimary"
+                        android:textSize="@dimen/text_18" />
+
+
+                    <View
+                        style="@style/Normal_Margin_Style"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_1"
+                        android:layout_marginBottom="@dimen/margin_bottom_16"
+                        android:background="@color/view_line" />
+                    <!--Password Details-->
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_login"
+                    style="@style/Font_family_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="@dimen/margin_right_16"
+                    android:layout_marginRight="@dimen/margin_right_16"
+                    android:layout_marginBottom="@dimen/margin_bottom_16"
+                    android:background="@drawable/button_style"
+                    android:text="Login"
+                    android:textColor="@color/dot_dark_screen4"
+                    android:textSize="@dimen/text_18" />
+
+            </LinearLayout>
+
+        </ScrollView>
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Font_family_light"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/textColorPrimary"
+            android:gravity="center"
+            android:textSize="@dimen/text_12"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/company_details" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
