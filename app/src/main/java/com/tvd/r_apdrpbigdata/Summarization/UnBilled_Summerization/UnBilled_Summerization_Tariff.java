@@ -115,58 +115,45 @@ public class UnBilled_Summerization_Tariff extends AppCompatActivity  implements
                 }
             }
         });
-        to_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showYearDialog(false);
-            }
-        });
+        to_edit.setOnClickListener(view -> showYearDialog(false));
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!from_edit.getText().toString().isEmpty()) {
-                    if (from_edit.getText().toString().equals(to_edit.getText().toString())){
-                        getSet.setDates_equal("Y");
-                        Log.d("debug","Date " + "Both Dates equals");
-                    }
-                    else{
-                        getSet.setDates_equal("N");
-                        Log.d("debug","Date " + "Both Dates different");
-                    }
-
-
-                    FROM_DATE = from_edit.getText().toString();
-                    TO_DATE = to_edit.getText().toString();
-                    if(ZONE.equals("") || ZONE.equals("SELECT"))
-                        ZONE = "none";
-                    if(CIRCLE.equals("") || CIRCLE.equals("SELECT"))
-                        CIRCLE = "none";
-                    if(DIVISION.equals("") || DIVISION.equals("SELECT"))
-                        DIVISION = "none";
-                    if(SUB_DIVISION.equals("") || SUB_DIVISION.equals("SELECT"))
-                        SUB_DIVISION = "none";
-
-                    String value = "from="+FROM_DATE+"&to="+TO_DATE+"&subDivision="+SUB_DIVISION+"&tariff="+TARIFF1+"&" +
-                            "company=500001%20-%20Hubli%20Electricity%20Supply%20Company%20Limited&" +
-                            "zone="+ZONE+"&circle="+CIRCLE+"&division="+DIVISION;
-                    setProgressDialog(progressDialog, "Fetching Data", "Please Wait");
-                        sendingData.new UnBilled_Summerization_Tariff(handler,arrayList,value,getSet).execute();
-                }else {
-                    Toast.makeText(getApplicationContext(),"Enter From Date",Toast.LENGTH_LONG).show();
+        submit.setOnClickListener(v -> {
+            if(!from_edit.getText().toString().isEmpty()) {
+                if (from_edit.getText().toString().equals(to_edit.getText().toString())){
+                    getSet.setDates_equal("Y");
+                    Log.d("debug","Date " + "Both Dates equals");
                 }
+                else{
+                    getSet.setDates_equal("N");
+                    Log.d("debug","Date " + "Both Dates different");
+                }
+
+
+                FROM_DATE = from_edit.getText().toString();
+                TO_DATE = to_edit.getText().toString();
+                if(ZONE.equals("") || ZONE.equals("SELECT"))
+                    ZONE = "none";
+                if(CIRCLE.equals("") || CIRCLE.equals("SELECT"))
+                    CIRCLE = "none";
+                if(DIVISION.equals("") || DIVISION.equals("SELECT"))
+                    DIVISION = "none";
+                if(SUB_DIVISION.equals("") || SUB_DIVISION.equals("SELECT"))
+                    SUB_DIVISION = "none";
+
+                String value = "from="+FROM_DATE+"&to="+TO_DATE+"&subDivision="+SUB_DIVISION+"&tariff="+TARIFF1+"&" +
+                        "company=500001%20-%20Hubli%20Electricity%20Supply%20Company%20Limited&" +
+                        "zone="+ZONE+"&circle="+CIRCLE+"&division="+DIVISION;
+                setProgressDialog(progressDialog, "Fetching Data", "Please Wait");
+                    sendingData.new UnBilled_Summerization_Tariff(handler,arrayList,value,getSet).execute();
+            }else {
+                Toast.makeText(getApplicationContext(),"Enter From Date",Toast.LENGTH_LONG).show();
             }
         });
     }
     private void initialize() {
         toolbar = findViewById(R.id.my_toolbar);
         toolbar.setNavigationIcon(R.drawable.action_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
         toolbar.setTitle("Unbilled Summarization Tariff");
         toolbar.setTitleTextColor(this.getResources().getColor(R.color.textColorPrimary));
 
@@ -189,25 +176,19 @@ public class UnBilled_Summerization_Tariff extends AppCompatActivity  implements
 
         month_wise = findViewById(R.id.month_wise);
 
-        year_month.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    to_date_textInputLayout.setVisibility(View.VISIBLE);
-                    from_date = false;
-                    Toast.makeText(getApplicationContext(), "year_month", Toast.LENGTH_LONG).show();
-                }
+        year_month.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                to_date_textInputLayout.setVisibility(View.VISIBLE);
+                from_date = false;
+                Toast.makeText(getApplicationContext(), "year_month", Toast.LENGTH_LONG).show();
             }
         });
-        month_wise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    from_date = true;
-                    to_date_textInputLayout.setVisibility(View.GONE);
-                    TO_DATE = "";
-                    from_edit.setText("");
-                }
+        month_wise.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                from_date = true;
+                to_date_textInputLayout.setVisibility(View.GONE);
+                TO_DATE = "";
+                from_edit.setText("");
             }
         });
 
@@ -411,29 +392,21 @@ public class UnBilled_Summerization_Tariff extends AppCompatActivity  implements
         nopicker.setValue(year);
         nopicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 
-        set.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (val){
-                    from_edit.setText(String.valueOf(nopicker.getValue()));
-                    from_edit.setSelection(from_edit.getText().length());
-                }
-                else {
-                    to_edit.setText(String.valueOf(nopicker.getValue()));
-                    to_edit.setSelection(to_edit.getText().length());
-                }
-
-
-
-                d.dismiss();
+        set.setOnClickListener(v -> {
+            if (val){
+                from_edit.setText(String.valueOf(nopicker.getValue()));
+                from_edit.setSelection(from_edit.getText().length());
             }
-        });
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                d.dismiss();
+            else {
+                to_edit.setText(String.valueOf(nopicker.getValue()));
+                to_edit.setSelection(to_edit.getText().length());
             }
+
+
+
+            d.dismiss();
         });
+        cancel.setOnClickListener(v -> d.dismiss());
         d.show();
 
     }
@@ -463,34 +436,25 @@ public class UnBilled_Summerization_Tariff extends AppCompatActivity  implements
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage("View Report")
                         .setCancelable(false)
-                        .setPositiveButton("Chart", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Intent intent = new Intent(UnBilled_Summerization_Tariff.this, UnBilled_Summerization_Tariff_chart.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("test", arrayList);
-                                bundle.putString("DATE_CHECK", getSet.getDates_equal());
-                                bundle.putString("appbarTitle", "DashBoard_Tariff_Wise_Chart");
-                                intent.putExtras(bundle);
-                                startActivity(intent);
-                            }
+                        .setPositiveButton("Chart", (dialog, id1) -> {
+                            Intent intent = new Intent(UnBilled_Summerization_Tariff.this, UnBilled_Summerization_Tariff_chart.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("test", arrayList);
+                            bundle.putString("DATE_CHECK", getSet.getDates_equal());
+                            bundle.putString("appbarTitle", "DashBoard_Tariff_Wise_Chart");
+                            intent.putExtras(bundle);
+                            startActivity(intent);
                         })
-                        .setNegativeButton("Report", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Intent intent = new Intent(UnBilled_Summerization_Tariff.this, UnBilled_Summerization_Tariff_Report.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("test", arrayList);
-                                bundle.putString("DATE_CHECK", getSet.getDates_equal());
-                                bundle.putString("appbarTitle", "UnBilled_Summerization_Tariff_Report");
-                                intent.putExtras(bundle);
-                                startActivity(intent);
-                            }
+                        .setNegativeButton("Report", (dialog, id12) -> {
+                            Intent intent = new Intent(UnBilled_Summerization_Tariff.this, UnBilled_Summerization_Tariff_Report.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("test", arrayList);
+                            bundle.putString("DATE_CHECK", getSet.getDates_equal());
+                            bundle.putString("appbarTitle", "UnBilled_Summerization_Tariff_Report");
+                            intent.putExtras(bundle);
+                            startActivity(intent);
                         })
-                        .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                builder.setCancelable(true);
-                            }
-                        });
+                        .setNeutralButton("Cancel", (dialog, which) -> builder.setCancelable(true));
                 AlertDialog alert = builder.create();
                 alert.show();
                 break;

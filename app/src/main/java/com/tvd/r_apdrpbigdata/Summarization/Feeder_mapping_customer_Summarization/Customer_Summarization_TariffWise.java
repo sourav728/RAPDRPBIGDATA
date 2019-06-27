@@ -102,6 +102,7 @@ public class Customer_Summarization_TariffWise extends AppCompatActivity impleme
         setspinner_values();
         from_edit.setOnClickListener(view -> {
             if (!from_date) {
+                getSetValues.setSingle_month("N");
                 Log.d("debug", "from_date " + from_date);
                 showYearDialog(true);
             } else {

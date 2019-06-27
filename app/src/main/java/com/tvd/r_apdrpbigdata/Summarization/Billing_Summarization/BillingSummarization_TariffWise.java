@@ -102,11 +102,11 @@ public class BillingSummarization_TariffWise extends AppCompatActivity implement
         setspinner_values();
         from_edit.setOnClickListener(view -> {
             if (!from_date) {
+                getSetValues.setSingle_month("N");
                 Log.d("debug", "from_date " + from_date);
                 showYearDialog(true);
             } else {
                 getSetValues.setSingle_month("Y");
-
                 Log.d("debug", "from_date " + from_date);
                 to_edit.setText("");
                 Calendar cal = Calendar.getInstance();

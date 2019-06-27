@@ -55,12 +55,7 @@ public class Customer_Summarization_TariffWise_report extends AppCompatActivity 
     private void initialize() {
         toolbar = findViewById(R.id.my_toolbar);
         toolbar.setNavigationIcon(R.drawable.action_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
         toolbar.setTitle("Customer Summarization report");
         toolbar.setTitleTextColor(this.getResources().getColor(R.color.textColorPrimary));
 
