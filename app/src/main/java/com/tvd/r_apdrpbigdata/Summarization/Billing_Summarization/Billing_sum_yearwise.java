@@ -84,29 +84,14 @@ public class Billing_sum_yearwise extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_billing_sum_yearwise);
         initialize();
         setspinner_values();
-        from_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showYearDialog(true);
-            }
-        });
-        to_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showYearDialog(false);
-            }
-        });
+        from_edit.setOnClickListener(view -> showYearDialog(true));
+        to_edit.setOnClickListener(view -> showYearDialog(false));
     }
 
     public void initialize() {
         toolbar = findViewById(R.id.my_toolbar);
         toolbar.setNavigationIcon(R.drawable.action_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
         toolbar.setTitle("Billing Summarization OverAll");
         toolbar.setTitleTextColor(this.getResources().getColor(R.color.textColorPrimary));
 

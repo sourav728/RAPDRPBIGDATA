@@ -2,18 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lin_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/lin_layout"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
     <LinearLayout
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical"
+        tools:ignore="UnknownIdInLayout">
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:ignore="UselessParent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,7 +46,8 @@
                         android:layout_height="15sp"
                         android:layout_marginRight="30dp"
                         android:layout_weight="2"
-                        android:src="@drawable/ic_star" />
+                        android:src="@drawable/ic_star"
+                        tools:ignore="RtlHardcoded" />
 
                     <Spinner
                         android:id="@+id/spr_escom"
@@ -50,6 +55,7 @@
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:background="@drawable/spinner_bg" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -73,7 +79,8 @@
                         android:layout_height="15sp"
                         android:layout_marginRight="30dp"
                         android:layout_weight="2"
-                        android:src="@drawable/ic_star" />
+                        android:src="@drawable/ic_star"
+                        tools:ignore="ContentDescription,RtlHardcoded" />
 
                     <Spinner
                         android:id="@+id/spr_zone"
@@ -104,7 +111,8 @@
                         android:layout_height="15sp"
                         android:layout_marginRight="30dp"
                         android:layout_weight="2"
-                        android:src="@drawable/ic_star" />
+                        android:src="@drawable/ic_star"
+                        tools:ignore="RtlHardcoded" />
 
                     <Spinner
                         android:id="@+id/spr_circle"
@@ -135,7 +143,8 @@
                         android:layout_height="15sp"
                         android:layout_marginRight="30dp"
                         android:layout_weight="2"
-                        android:src="@drawable/ic_star" />
+                        android:src="@drawable/ic_star"
+                        tools:ignore="RtlHardcoded" />
 
                     <Spinner
                         android:id="@+id/spr_division"
@@ -167,7 +176,7 @@
                         android:layout_marginRight="30dp"
                         android:layout_weight="2"
                         android:src="@drawable/ic_star"
-                        tools:ignore="RtlHardcoded" />
+                        tools:ignore="ContentDescription,RtlHardcoded" />
 
                     <Spinner
                         android:id="@+id/spr_subdivision"
@@ -194,7 +203,8 @@
                             android:id="@+id/from_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/From_date" />
+                            android:hint="@string/From_date"
+                            tools:ignore="Autofill,TextFields" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout

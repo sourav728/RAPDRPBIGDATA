@@ -172,6 +172,64 @@
                     android:layout_weight="1"
                     android:background="@drawable/spinner_bg" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.6"
+                    android:text="@string/escom_time_period"
+                    android:textAlignment="textEnd"
+                    android:textSize="@dimen/text_size"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="15sp"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="2"
+                    android:src="@drawable/ic_star" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/year_month_wise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Year and Month Wise"
+                            android:checked="true"
+                            android:button="@drawable/custom_radio_search"
+                            android:textSize="@dimen/text_size" />
+
+                        <RadioButton
+                            android:id="@+id/month_wise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Single Month Wise"
+                            android:button="@drawable/custom_radio_search"
+                            android:textSize="@dimen/text_size" />
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -291,7 +349,8 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:id="@+id/to_date_textInputLayout">
 
                     <EditText
                         android:id="@+id/to_date"

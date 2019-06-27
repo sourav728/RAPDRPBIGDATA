@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
@@ -28,7 +27,8 @@ import com.tvd.r_apdrpbigdata.values.FunctionCall;
 import java.util.ArrayList;
 
 public class BillingSummarizationTariffWiseChart2 extends AppCompatActivity implements OnChartValueSelectedListener {
-
+    String[] name = new String[50];
+    float[] percent = new float[50];
     private BarChart mBarChart;
     //group bar chart variabble initialization
     float groupSpace = 0.13f;
@@ -37,7 +37,7 @@ public class BillingSummarizationTariffWiseChart2 extends AppCompatActivity impl
 
     int startMonth, endMonth;
     int groupCount;
-    String date_check_val = "";
+    String date_check_val = "", single_month = "";
 
     ArrayList<Billing_Summarization_model> myList;
     Billing_Summarization_model billing_summarization_model;
@@ -77,6 +77,7 @@ public class BillingSummarizationTariffWiseChart2 extends AppCompatActivity impl
 
         Intent intent = getIntent();
         date_check_val = intent.getStringExtra("DATE_CHECK");
+        single_month = intent.getStringExtra("SINGLE_MONTH");
         //initialize_group_bar();
         groupCount = myList.size();
 
@@ -126,7 +127,7 @@ public class BillingSummarizationTariffWiseChart2 extends AppCompatActivity impl
             //first checkbox
             if (chk_install.isChecked()) {
                 a = 1;
-                count ++;
+                count++;
             } else {
                 a = 0;
             }
@@ -157,37 +158,43 @@ public class BillingSummarizationTariffWiseChart2 extends AppCompatActivity impl
         values2 = new ArrayList<>();
         values3 = new ArrayList<>();
 
-        if (date_check_val.equals("Y"))
-            startMonth = Integer.parseInt(myList.get(0).getMonth());
-        else startMonth = Integer.parseInt(myList.get(0).getYear());
+        if (!single_month.equals("Y")) {
+            if (date_check_val.equals("Y"))
+                startMonth = Integer.parseInt(myList.get(0).getMonth());
+            else {
+                startMonth = Integer.parseInt(myList.get(0).getYear());
+            }
+        } else {
+            startMonth = 0;
+        }
 
         endMonth = startMonth + myList.size();
         for (int i = 0; i < myList.size(); i++) {
             billing_summarization_model = myList.get(i);
             Log.d("debug", "month " + startMonth);
-            if (a==0)
+            if (a == 0)
                 values1.add(new BarEntry(i, Float.parseFloat(billing_summarization_model.getInstallations())));
-            if (b==0)
+            if (b == 0)
                 values2.add(new BarEntry(i, Float.parseFloat(billing_summarization_model.getConsumed_unit())));
-            if (c==0)
+            if (c == 0)
                 values3.add(new BarEntry(i, Float.parseFloat(billing_summarization_model.getCurrent_bill_amt())));
         }
 
-        BarDataSet set1=null, set2=null, set3=null;
+        BarDataSet set1 = null, set2 = null, set3 = null;
 
         if (mBarChart.getData() != null && mBarChart.getData().getDataSetCount() > 0) {
-            if (a==0)
+            if (a == 0)
                 set1 = (BarDataSet) mBarChart.getData().getDataSetByIndex(0);
-            if (b==0)
+            if (b == 0)
                 set2 = (BarDataSet) mBarChart.getData().getDataSetByIndex(1);
-            if (c==0)
+            if (c == 0)
                 set3 = (BarDataSet) mBarChart.getData().getDataSetByIndex(2);
 
-            if (a==0)
+            if (a == 0)
                 set1.setValues(values1);
-            if (b==0)
+            if (b == 0)
                 set2.setValues(values2);
-            if (c==0)
+            if (c == 0)
                 set3.setValues(values3);
 
             mBarChart.getData().notifyDataChanged();

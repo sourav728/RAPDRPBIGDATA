@@ -215,9 +215,10 @@
                             android:id="@+id/year_month_wise"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checked = "true"
+                            android:button="@drawable/custom_radio_search"
                             android:text="@string/year_and_month_wise"
                             android:textSize="@dimen/text_size"
-                            android:button="@drawable/custom_radio_search"
                             tools:ignore="HardcodedText" />
 
                         <RadioButton

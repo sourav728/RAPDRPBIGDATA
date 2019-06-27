@@ -54,6 +54,8 @@ public class Constant {
     public static final String SUBDIV_NAME = "SUBDIV_NAME";
     public static final String TARIFF_NAME = "TARIFF";
     public static final String PUBLIC_API = "http://106.51.81.177:8080/Hescom/";
-    //public static final String PUBLIC_API = "http://192.168.100.115:8080/Hescom_Hive/";
+   // public static final String PUBLIC_API = "http://106.51.81.177:8080/Hescom_Hive/";
     //public static final String PUBLIC_API = "http://192.168.100.89:8080/Hescom/";
+    //Hive URL
+    //public static final String PUBLIC_API = "http://106.51.81.177:8080/Hescom_Hive/";
 }

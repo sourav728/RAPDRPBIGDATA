@@ -105,6 +105,8 @@ public class BillingSummarization_TariffWise extends AppCompatActivity implement
                 Log.d("debug", "from_date " + from_date);
                 showYearDialog(true);
             } else {
+                getSetValues.setSingle_month("Y");
+
                 Log.d("debug", "from_date " + from_date);
                 to_edit.setText("");
                 Calendar cal = Calendar.getInstance();
@@ -115,26 +117,16 @@ public class BillingSummarization_TariffWise extends AppCompatActivity implement
                         dateSetListener, year, month, date);
                 dialog.getDatePicker().setMaxDate(cal.getTimeInMillis());
                 dialog.show();
-
             }
         });
-        to_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showYearDialog(false);
-            }
-        });
+        to_edit.setOnClickListener(view -> showYearDialog(false));
     }
 
     public void initialize() {
+
         toolbar = findViewById(R.id.my_toolbar);
         toolbar.setNavigationIcon(R.drawable.action_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
         toolbar.setTitle("Billing Summarization TariffWise");
         toolbar.setTitleTextColor(this.getResources().getColor(R.color.textColorPrimary));
 
@@ -196,14 +188,12 @@ public class BillingSummarization_TariffWise extends AppCompatActivity implement
             switch (id) {
                 case R.id.year_month_wise:
                     from_date = false;
-                    getSetValues.setSingle_month("N");
                     to_date_textInputLayout.setVisibility(View.VISIBLE);
                     from_edit.setText("");
                     //Toast.makeText(getApplicationContext(), "year_month", Toast.LENGTH_LONG).show();
                     break;
                 case R.id.month_wise:
                     from_date = true;
-                    getSetValues.setSingle_month("Y");
                     to_date_textInputLayout.setVisibility(View.GONE);
                     from_edit.setText("");
                     break;

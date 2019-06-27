@@ -81,7 +81,7 @@ public class ReceivingData {
                     billing_summarization_model1.setValue(array1.getString(j));
                     arrayList1.add(billing_summarization_model1);
                 }
-                if (getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     billing_summarization_model.setInstallations(arrayList1.get(1).getValue());
@@ -90,7 +90,16 @@ public class ReceivingData {
                     Log.d("debug", "ConsumedUnit " + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
                     billing_summarization_model.setCurrent_bill_amt(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(3).getValue())));
                     Log.d("debug", "CurrentAmt" + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(3).getValue())));
-                }else {
+                } else if (getSetValues.getSingle_month().equals("Y")) {
+                    billing_summarization_model.setTariff(arrayList1.get(0).getValue());
+                    Log.d("debug","Tariff " + arrayList1.get(0).getValue());
+                    billing_summarization_model.setInstallations(arrayList1.get(1).getValue());
+                    Log.d("debug", "Install " + arrayList1.get(1).getValue());
+                    billing_summarization_model.setConsumed_unit(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
+                    Log.d("debug", "ConsumedUnit " + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
+                    billing_summarization_model.setCurrent_bill_amt(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(3).getValue())));
+                    Log.d("debug", "CurrentAmt" + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(3).getValue())));
+                } else {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     billing_summarization_model.setMonth(arrayList1.get(1).getValue());
@@ -129,7 +138,7 @@ public class ReceivingData {
                     billing_summarization_model1.setValue(array1.getString(j));
                     arrayList1.add(billing_summarization_model1);
                 }
-                if (getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     billing_summarization_model.setInstallations(arrayList1.get(1).getValue());
@@ -138,7 +147,7 @@ public class ReceivingData {
                     Log.d("debug", "ConsumedUnit " + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
                     billing_summarization_model.setCurrent_bill_amt(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(3).getValue())));
                     Log.d("debug", "CurrentAmt" + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(3).getValue())));
-                }else {
+                } else {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     billing_summarization_model.setMonth(arrayList1.get(1).getValue());
@@ -177,7 +186,7 @@ public class ReceivingData {
                     payment_summarization_model1.setValue(array1.getString(j));
                     arrayList1.add(payment_summarization_model1);
                 }
-                if (getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     payment_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     payment_summarization_model.setInstallations(arrayList1.get(1).getValue());
@@ -194,7 +203,7 @@ public class ReceivingData {
                     Log.d("debug", "Collection Amount " + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(6).getValue())));
                     payment_summarization_model.setClosing_balance_amt(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(7).getValue())));
                     Log.d("debug", "Closing Balance Amount " + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(7).getValue())));
-                }else {
+                } else {
                     payment_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     payment_summarization_model.setMonth(arrayList1.get(1).getValue());
@@ -241,7 +250,7 @@ public class ReceivingData {
                     payment_summarization_model1.setValue(array1.getString(j));
                     arrayList1.add(payment_summarization_model1);
                 }
-                if (getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     payment_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     payment_summarization_model.setInstallations(arrayList1.get(1).getValue());
@@ -258,7 +267,7 @@ public class ReceivingData {
                     Log.d("debug", "Collection Amount " + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(6).getValue())));
                     payment_summarization_model.setClosing_balance_amt(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(7).getValue())));
                     Log.d("debug", "Closing Balance Amount " + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(7).getValue())));
-                }else {
+                } else {
                     payment_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     payment_summarization_model.setMonth(arrayList1.get(1).getValue());
@@ -307,16 +316,16 @@ public class ReceivingData {
                     customer_summarization_model1.setValue(array1.getString(j));
                     arrayList1.add(customer_summarization_model1);
                 }
-                if (getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     customer_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     customer_summarization_model.setInstallation(arrayList1.get(1).getValue());
                     Log.d("debug", "Install " + arrayList1.get(1).getValue());
-                }else {
+                } else {
                     customer_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     customer_summarization_model.setMonth(arrayList1.get(1).getValue());
-                    Log.d("debug","Month " + arrayList1.get(1).getValue());
+                    Log.d("debug", "Month " + arrayList1.get(1).getValue());
                     customer_summarization_model.setInstallation(arrayList1.get(2).getValue());
                     Log.d("debug", "Install " + arrayList1.get(2).getValue());
                 }
@@ -346,16 +355,16 @@ public class ReceivingData {
                     customer_summarization_model1.setValue(array1.getString(j));
                     arrayList1.add(customer_summarization_model1);
                 }
-                if (getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     customer_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     customer_summarization_model.setInstallation(arrayList1.get(1).getValue());
                     Log.d("debug", "Install " + arrayList1.get(1).getValue());
-                }else {
+                } else {
                     customer_summarization_model.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     customer_summarization_model.setMonth(arrayList1.get(1).getValue());
-                    Log.d("debug","Month " + arrayList1.get(1).getValue());
+                    Log.d("debug", "Month " + arrayList1.get(1).getValue());
                     customer_summarization_model.setInstallation(arrayList1.get(2).getValue());
                     Log.d("debug", "Install " + arrayList1.get(2).getValue());
                 }
@@ -386,14 +395,14 @@ public class ReceivingData {
                     abnormal_subnormal1.setValue(array1.getString(j));
                     arrayList1.add(abnormal_subnormal1);
                 }
-                if (getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     abnormal_subnormal.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     abnormal_subnormal.setBilled_installation(arrayList1.get(1).getValue());
                     Log.d("debug", "Billed Install " + arrayList1.get(1).getValue());
                     abnormal_subnormal.setAbnormal_installation(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
                     Log.d("debug", "Abnormal Install " + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
-                }else {
+                } else {
                     abnormal_subnormal.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     abnormal_subnormal.setMonth(arrayList1.get(1).getValue());
@@ -430,18 +439,18 @@ public class ReceivingData {
                     abnormal_subnormal1.setValue(array1.getString(j));
                     arrayList1.add(abnormal_subnormal1);
                 }
-                if (getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     abnormal_subnormal.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     abnormal_subnormal.setBilled_installation(arrayList1.get(1).getValue());
                     Log.d("debug", "Billed Install " + arrayList1.get(1).getValue());
                     abnormal_subnormal.setSubnormal_installation(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
                     Log.d("debug", "Subnormal Install " + functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
-                }else {
+                } else {
                     abnormal_subnormal.setYear(arrayList1.get(0).getValue());
                     Log.d("debug", "Year " + arrayList1.get(0).getValue());
                     abnormal_subnormal.setMonth(arrayList1.get(1).getValue());
-                    Log.d("debug","Month " + arrayList1.get(1).getValue());
+                    Log.d("debug", "Month " + arrayList1.get(1).getValue());
                     abnormal_subnormal.setBilled_installation(arrayList1.get(2).getValue());
                     Log.d("debug", "Billed Install " + arrayList1.get(2).getValue());
                     abnormal_subnormal.setSubnormal_installation(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(3).getValue())));
@@ -459,7 +468,7 @@ public class ReceivingData {
         }
     }
 
-    void get_deposit_summarizaton_value(String result, Handler handler, ArrayList<Billing_Summarization_model> arrayList,GetSetValues getSetValues) {
+    void get_deposit_summarizaton_value(String result, Handler handler, ArrayList<Billing_Summarization_model> arrayList, GetSetValues getSetValues) {
         arrayList.clear();
         JSONArray jsonArray1, jsonArray2;
 
@@ -478,13 +487,13 @@ public class ReceivingData {
                 }
 
 
-                if(getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     billing_summarization_model.setInstallations(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(1).getValue())));
                     billing_summarization_model.setDeposit_amt(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
 
 
-                }else {
+                } else {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     billing_summarization_model.setMonth(arrayList1.get(1).getValue());
                     billing_summarization_model.setInstallations(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
@@ -502,7 +511,7 @@ public class ReceivingData {
         }
     }
 
-    void get_disconnection_summerization(String result, Handler handler, ArrayList<Billing_Summarization_model> arrayList, GetSetValues getSetValues){
+    void get_disconnection_summerization(String result, Handler handler, ArrayList<Billing_Summarization_model> arrayList, GetSetValues getSetValues) {
         arrayList.clear();
         JSONArray jsonArray1, jsonArray2;
 
@@ -519,12 +528,12 @@ public class ReceivingData {
                     else billing_summarization_model1.setValue("0.0");
                     arrayList1.add(billing_summarization_model1);
                 }
-                if(getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     billing_summarization_model.setInstallations(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(1).getValue())));
                     billing_summarization_model.setConnecton_type((arrayList1.get(2).getValue()));
 
-                }else {
+                } else {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     billing_summarization_model.setMonth(arrayList1.get(1).getValue());
                     billing_summarization_model.setInstallations(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
@@ -545,7 +554,7 @@ public class ReceivingData {
     }
 
     //For Unbilled Summarization
-    void get_unbilled_summarization(String result,Handler handler,ArrayList<Billing_Summarization_model> arrayList,GetSetValues getSetValues){
+    void get_unbilled_summarization(String result, Handler handler, ArrayList<Billing_Summarization_model> arrayList, GetSetValues getSetValues) {
         arrayList.clear();
         JSONArray jsonArray1, jsonArray2;
 
@@ -562,16 +571,17 @@ public class ReceivingData {
                     else billing_summarization_model1.setValue("0.0");
                     arrayList1.add(billing_summarization_model1);
                 }
-                if(getSetValues.getDates_equal().equals("N")){
+                if (getSetValues.getDates_equal().equals("N")) {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     billing_summarization_model.setInstallations(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(1).getValue())));
 
-                }else {
+                } else {
                     billing_summarization_model.setYear(arrayList1.get(0).getValue());
                     billing_summarization_model.setMonth(arrayList1.get(1).getValue());
-                    if(arrayList1.size()>3)
+                    if (arrayList1.size() > 3)
                         billing_summarization_model.setInstallations(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(3).getValue())));
-                    else billing_summarization_model.setInstallations(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
+                    else
+                        billing_summarization_model.setInstallations(functionCall.decimalroundoff(Double.parseDouble(arrayList1.get(2).getValue())));
                 }
                 arrayList.add(billing_summarization_model);
 
@@ -672,7 +682,6 @@ public class ReceivingData {
             handler.sendEmptyMessage(DIALOG_FAILURE);
         }
     }
-
 
 
     //---------------------------------------------------------------------------------------------------------------------------
@@ -1042,7 +1051,7 @@ public class ReceivingData {
                     } else response1.setValue(jsonArray2.getString(j));
                     arrayList1.add(response1);
                 }
-                if (getsetValues.getMonth_flag().equals("N")){
+                if (getsetValues.getMonth_flag().equals("N")) {
                     response.setA1(arrayList1.get(0).getValue());
                     response.setA2(arrayList1.get(1).getValue());
                     response.setA3(arrayList1.get(2).getValue());
@@ -1056,7 +1065,7 @@ public class ReceivingData {
                     response.setA11(arrayList1.get(10).getValue());
                     response.setA12(arrayList1.get(11).getValue());
                     response.setA13(arrayList1.get(12).getValue());
-                }else {
+                } else {
                     response.setA1(arrayList1.get(0).getValue());
                     response.setA2(arrayList1.get(1).getValue());
                     response.setA3(arrayList1.get(2).getValue());
@@ -1102,7 +1111,7 @@ public class ReceivingData {
                     } else response1.setValue(jsonArray2.getString(j));
                     arrayList1.add(response1);
                 }
-                if (getsetValues.getMonth_flag().equals("N")){
+                if (getsetValues.getMonth_flag().equals("N")) {
                     response.setA1(arrayList1.get(0).getValue());
                     response.setA2(arrayList1.get(1).getValue());
                     response.setA3(arrayList1.get(2).getValue());
@@ -1114,7 +1123,7 @@ public class ReceivingData {
                     response.setA9(arrayList1.get(8).getValue());
                     response.setA10(arrayList1.get(9).getValue());
                     response.setA11(arrayList1.get(10).getValue());
-                }else {
+                } else {
                     response.setA1(arrayList1.get(0).getValue());
                     response.setMonth(arrayList1.get(1).getValue());
                     response.setA2(arrayList1.get(2).getValue());

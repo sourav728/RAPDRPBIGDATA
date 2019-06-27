@@ -35,6 +35,7 @@ public class Deposit_Summarization_Chart extends AppCompatActivity {
     int a = 0, b = 0;
     private Button buttn_apply;
     private CheckBox chk_billed_install, chk_deposit_amt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,22 +174,22 @@ public class Deposit_Summarization_Chart extends AppCompatActivity {
 
 
         for (int i = 0; i < arrayListl.size(); i++) {
-            if (a==0)
-            values1.add(new BarEntry(i, Float.parseFloat(arrayListl.get(i).getInstallations())));
-            if (b==0)
-            values2.add(new BarEntry(i, Float.parseFloat(arrayListl.get(i).getDeposit_amt())));
+            if (a == 0)
+                values1.add(new BarEntry(i, Float.parseFloat(arrayListl.get(i).getInstallations())));
+            if (b == 0)
+                values2.add(new BarEntry(i, Float.parseFloat(arrayListl.get(i).getDeposit_amt())));
         }
 
-        BarDataSet set1=null, set2=null;
+        BarDataSet set1 = null, set2 = null;
         if (chart.getData() != null && chart.getData().getDataSetCount() > 0) {
-            if (a==0)
-            set1 = (BarDataSet) chart.getData().getDataSetByIndex(0);
-            if (b==0)
-            set2 = (BarDataSet) chart.getData().getDataSetByIndex(1);
-            if (a==0)
-            set1.setValues(values1);
-            if (b==0)
-            set2.setValues(values2);
+            if (a == 0)
+                set1 = (BarDataSet) chart.getData().getDataSetByIndex(0);
+            if (b == 0)
+                set2 = (BarDataSet) chart.getData().getDataSetByIndex(1);
+            if (a == 0)
+                set1.setValues(values1);
+            if (b == 0)
+                set2.setValues(values2);
 
             chart.getData().notifyDataChanged();
             chart.notifyDataSetChanged();

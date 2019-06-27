@@ -23,7 +23,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -122,7 +121,8 @@
         <activity
             android:name=".Summarization.Abnormal_Subnormal_Summarization.Abnormal_Summarization_Graph_Chart"
             android:screenOrientation="landscape"
-            tools:ignore="InnerclassSeparator" />
+            tools:ignore="InnerclassSeparator"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name=".Summarization.Abnormal_Subnormal_Summarization.Abnormal_Summarization_Graph_Report"
             android:screenOrientation="portrait"
@@ -178,7 +178,8 @@
         <activity
             android:name=".Summarization.Billing_Summarization.BillingSummarization_TariffWise"
             android:screenOrientation="portrait"
-            tools:ignore="InnerclassSeparator" />
+            tools:ignore="InnerclassSeparator"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name=".Summarization.UnBilled_Summerization.UnBilled_Summerization_Tariff"
             android:screenOrientation="portrait"
@@ -232,7 +233,8 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
     </application>
 
 </manifest>

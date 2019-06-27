@@ -10,6 +10,7 @@ public class Billing_Summarization_model implements Serializable {
     private String month="";
     private String deposit_amt="";
     private String connecton_type = "";
+    private String tariff = "";
     private String value = "";
 
     public String getYear() {
@@ -74,5 +75,13 @@ public class Billing_Summarization_model implements Serializable {
 
     public void setDeposit_amt(String deposit_amt) {
         this.deposit_amt = deposit_amt;
+    }
+
+    public String getTariff() {
+        return tariff;
+    }
+
+    public void setTariff(String tariff) {
+        this.tariff = tariff;
     }
 }

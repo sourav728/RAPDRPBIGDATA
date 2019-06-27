@@ -1,5 +1,6 @@
 package com.tvd.r_apdrpbigdata.Summarization.Payment_Summarization;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,11 +21,12 @@ public class Payment_Summarization_Overall_Report extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Payment_Summarization_model> myList = new ArrayList<>();
     Payment_Summarization_model payment_summarization_model;
-    TextView txt_month_sow_hide,txt_tot_month,txt_tot_install, txt_tot_opening_bls, txt_tot_con_unit, txt_tot_demand, txt_tot_net_amt, txt_tot_col_amt, txt_tot_clos_amt;
+    TextView txt_year,txt_month_sow_hide,txt_tot_month,txt_tot_install, txt_tot_opening_bls, txt_tot_con_unit, txt_tot_demand, txt_tot_net_amt, txt_tot_col_amt, txt_tot_clos_amt;
     double install=0, opening_bls=0,con_unit=0,demand=0,net_amt=0,col_amt=0,clos_amt=0;
-    String date_check_val = "";
+    String date_check_val = "",single_month="";
     FunctionCall functionCall;
     private android.support.v7.widget.Toolbar toolbar;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +34,13 @@ public class Payment_Summarization_Overall_Report extends AppCompatActivity {
 
         toolbar = findViewById(R.id.my_toolbar);
         toolbar.setNavigationIcon(R.drawable.action_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
         toolbar.setTitle("Payment Summarization Report");
         toolbar.setTitleTextColor(this.getResources().getColor(R.color.textColorPrimary));
 
         Intent intent = getIntent();
         date_check_val = intent.getStringExtra("DATE_CHECK");
+        single_month = intent.getStringExtra("SINGLE_MONTH");
         myList = (ArrayList<Payment_Summarization_model>) getIntent().getSerializableExtra("mylist");
         initialize();
 
@@ -56,13 +54,21 @@ public class Payment_Summarization_Overall_Report extends AppCompatActivity {
             col_amt = col_amt + Double.parseDouble(myList.get(i).getCollection_amt());
             clos_amt = clos_amt + Double.parseDouble(myList.get(i).getClosing_balance_amt());
         }
-        if (date_check_val.equals("Y")) {
-            txt_tot_month.setVisibility(View.VISIBLE);
-            txt_month_sow_hide.setVisibility(View.VISIBLE);
-        } else {
+        if (!single_month.equals("Y")){
+            txt_year.setText(getString(R.string.transaction_year));
+            if (date_check_val.equals("Y")) {
+                txt_tot_month.setVisibility(View.VISIBLE);
+                txt_month_sow_hide.setVisibility(View.VISIBLE);
+            } else {
+                txt_tot_month.setVisibility(View.GONE);
+                txt_month_sow_hide.setVisibility(View.GONE);
+            }
+        }else {
+            txt_year.setText("Tariff");
             txt_tot_month.setVisibility(View.GONE);
             txt_month_sow_hide.setVisibility(View.GONE);
         }
+
 
         txt_tot_install.setText(String.valueOf(functionCall.decimalroundoff(install)));
         txt_tot_opening_bls.setText(String.valueOf(functionCall.decimalroundoff(opening_bls)));
@@ -75,6 +81,7 @@ public class Payment_Summarization_Overall_Report extends AppCompatActivity {
 
     private void initialize() {
         functionCall = new FunctionCall();
+        txt_year = findViewById(R.id.txt_trans_year);
         txt_month_sow_hide = findViewById(R.id.txt_tot_month);
         txt_tot_month = findViewById(R.id.txt_month);
         txt_tot_install = findViewById(R.id.txt_tot_install);

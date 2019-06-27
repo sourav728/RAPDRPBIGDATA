@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class Payment_Summarization_Chart extends AppCompatActivity implements OnChartValueSelectedListener {
 
-    private String date_check_val = "";
+    private String date_check_val = "",single_month="";
     float groupSpace = 0.02f;
     float barSpace = 0.02f; // 7 DataSet
     float barWidth = 0.12f;//7 DataSet
@@ -65,7 +65,7 @@ public class Payment_Summarization_Chart extends AppCompatActivity implements On
         initialize();
         Intent intent = getIntent();
         date_check_val = intent.getStringExtra("DATE_CHECK");
-
+        single_month = intent.getStringExtra("SINGLE_MONTH");
 
         mBarChart.setOnChartValueSelectedListener(this);
         mBarChart.getDescription().setEnabled(false);
@@ -203,11 +203,13 @@ public class Payment_Summarization_Chart extends AppCompatActivity implements On
         values6 = new ArrayList<>();
 
         values7 = new ArrayList<>();
-
-        if (date_check_val.equals("Y"))
-            startMonth = Integer.parseInt(myList.get(0).getMonth());
-        else startMonth = Integer.parseInt(myList.get(0).getYear());
-
+        if (!single_month.equals("Y")) {
+            if (date_check_val.equals("Y"))
+                startMonth = Integer.parseInt(myList.get(0).getMonth());
+            else startMonth = Integer.parseInt(myList.get(0).getYear());
+        }else {
+            startMonth = 0;
+        }
         endMonth = startMonth + myList.size();
         for (int i = 0; i < myList.size(); i++) {
             payment_summarization_model = myList.get(i);

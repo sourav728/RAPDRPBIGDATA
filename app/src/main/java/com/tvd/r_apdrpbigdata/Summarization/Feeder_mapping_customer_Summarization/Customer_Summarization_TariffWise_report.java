@@ -21,10 +21,11 @@ public class Customer_Summarization_TariffWise_report extends AppCompatActivity 
     RecyclerView recyclerView;
     ArrayList<Customer_Summarization_model> myList = new ArrayList<>();
     Customer_Summarization_model customer_summarization_model;
-    TextView txt_yearmonth,txt_tot_install;
-    String date_check_val = "";
-    double install=0;
+    TextView txt_yearmonth, txt_tot_install;
+    String date_check_val = "", single_month = "";
+    double install = 0;
     private android.support.v7.widget.Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +33,21 @@ public class Customer_Summarization_TariffWise_report extends AppCompatActivity 
         myList = (ArrayList<Customer_Summarization_model>) getIntent().getSerializableExtra("mylist");
         Intent intent = getIntent();
         date_check_val = intent.getStringExtra("DATE_CHECK");
+        single_month = intent.getStringExtra("SINGLE_MONTH");
         Log.d("debug", "date_check_val in report " + date_check_val);
         initialize();
         for (int i = 0; i < myList.size(); i++) {
             install = install + Double.parseDouble(myList.get(i).getInstallation());
         }
-        if (date_check_val.equals("Y")) {
-            txt_yearmonth.setText(R.string.transaction_month);
+
+        if (!single_month.equals("Y")) {
+            if (date_check_val.equals("Y")) {
+                txt_yearmonth.setText(R.string.transaction_month);
+            } else {
+                txt_yearmonth.setText(R.string.transaction_year);
+            }
         } else {
-            txt_yearmonth.setText(R.string.transaction_year);
+            txt_yearmonth.setText("Tariff");
         }
         txt_tot_install.setText(String.valueOf(install));
     }
@@ -63,7 +70,7 @@ public class Customer_Summarization_TariffWise_report extends AppCompatActivity 
         recyclerView = findViewById(R.id.billing_summ_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        customerSummarizationAdapter = new CustomerSummarizationAdapter(myList, this, customer_summarization_model,date_check_val);
+        customerSummarizationAdapter = new CustomerSummarizationAdapter(myList, this, customer_summarization_model, date_check_val);
         recyclerView.setAdapter(customerSummarizationAdapter);
     }
 }

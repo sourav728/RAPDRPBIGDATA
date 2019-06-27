@@ -1,6 +1,7 @@
 package com.tvd.r_apdrpbigdata.Summarization.Payment_Summarization;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,12 +18,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.tvd.r_apdrpbigdata.R;
 import com.tvd.r_apdrpbigdata.adapters.RoleAdapter1;
@@ -31,8 +36,12 @@ import com.tvd.r_apdrpbigdata.models.Payment_Summarization_model;
 import com.tvd.r_apdrpbigdata.values.FunctionCall;
 import com.tvd.r_apdrpbigdata.values.GetSetValues;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import static com.tvd.r_apdrpbigdata.values.Constant.BILL_SUMMARIZATION_DIALOG;
 import static com.tvd.r_apdrpbigdata.values.Constant.CIRCLE_ID;
@@ -55,14 +64,16 @@ public class Payment_Summarization_TariffWise extends AppCompatActivity implemen
     RoleAdapter1 company_adapter, zone_adapter, circle_adapter, division_adapter, subdivision_adapter, tariff_adapter, acc_status_adapter, billed_status_adapter;
     String main_role = "";
     EditText from_edit, to_edit;
-    int year;
     ArrayList<Payment_Summarization_model> payment_summarization_arraylist;
     SendingData sendingData;
     LinearLayout root_layout;
-    String company = "500001 - Hubli Electricity Supply Company Limited",COMPANY="", zone = "", circle = "", division = "", sub_division = "", tariff = "", acc_status = "", billed_status = "";
+    String company = "500001 - Hubli Electricity Supply Company Limited", COMPANY = "", zone = "", circle = "", division = "", sub_division = "", tariff = "", acc_status = "", billed_status = "";
     GetSetValues getSetValues;
     ProgressDialog progressDialog;
     private android.support.v7.widget.Toolbar toolbar;
+    int year, month, date;
+    boolean from_date = false;
+    TextInputLayout to_date_textInputLayout;
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
@@ -87,29 +98,50 @@ public class Payment_Summarization_TariffWise extends AppCompatActivity implemen
         setContentView(R.layout.activity_payment__summarization__yearwise);
         initialize();
         setspinner_values();
-        from_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        from_edit.setOnClickListener(view -> {
+            if (!from_date) {
+                Log.d("debug", "from_date " + from_date);
                 showYearDialog(true);
+            } else {
+                getSetValues.setSingle_month("Y");
+                Log.d("debug", "from_date " + from_date);
+                to_edit.setText("");
+                Calendar cal = Calendar.getInstance();
+                year = cal.get(Calendar.YEAR);
+                month = cal.get(Calendar.MONTH);
+                date = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(Payment_Summarization_TariffWise.this,
+                        dateSetListener, year, month, date);
+                dialog.getDatePicker().setMaxDate(cal.getTimeInMillis());
+                dialog.show();
+
             }
         });
-        to_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showYearDialog(false);
-            }
-        });
+        to_edit.setOnClickListener(view -> showYearDialog(false));
     }
+
+    public DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            Date Starttime = null;
+            from_edit.setText("");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+            try {
+                Starttime = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse((year + "-" + (monthOfYear + 1) + "-" + dayOfMonth));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            String dateselected = sdf.format(Starttime);
+            Log.d("date", dateselected);
+            from_edit.setText(dateselected);
+            from_edit.setSelection(from_edit.getText().length());
+        }
+    };
 
     public void initialize() {
         toolbar = findViewById(R.id.my_toolbar);
         toolbar.setNavigationIcon(R.drawable.action_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
         toolbar.setTitle("Payment Summarization TariffWise");
         toolbar.setTitleTextColor(this.getResources().getColor(R.color.textColorPrimary));
 
@@ -125,6 +157,7 @@ public class Payment_Summarization_TariffWise extends AppCompatActivity implemen
         payment_summarization_arraylist = new ArrayList<>();
         from_edit = findViewById(R.id.from_date);
         to_edit = findViewById(R.id.to_date);
+        to_date_textInputLayout = findViewById(R.id.to_date_textInputLayout);
 
         spinner_escom = findViewById(R.id.spr_escom);
         spinner_zone = findViewById(R.id.spr_zone);
@@ -176,6 +209,28 @@ public class Payment_Summarization_TariffWise extends AppCompatActivity implemen
         tariff_adapter = new RoleAdapter1(tariff_list, getApplicationContext());
         spinner_tariff.setAdapter(tariff_adapter);
 
+        final RadioGroup group = findViewById(R.id.radioGroup);
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int id = group.getCheckedRadioButtonId();
+                switch (id) {
+                    case R.id.year_month_wise:
+                        from_date = false;
+                        to_date_textInputLayout.setVisibility(View.VISIBLE);
+                        from_edit.setText("");
+                        Toast.makeText(getApplicationContext(), "year_month", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.month_wise:
+                        from_date = true;
+                        to_date_textInputLayout.setVisibility(View.GONE);
+                        from_edit.setText("");
+                        break;
+
+                }
+            }
+        });
+
         sendingData = new SendingData();
     }
 
@@ -192,28 +247,21 @@ public class Payment_Summarization_TariffWise extends AppCompatActivity implemen
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("View Report")
                     .setCancelable(false)
-                    .setPositiveButton("Chart", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Intent intent = new Intent(Payment_Summarization_TariffWise.this, Payment_Summarization_Chart.class);
-                            intent.putExtra("DATE_CHECK", getSetValues.getDates_equal());
-                            intent.putExtra("mylist", payment_summarization_arraylist);
-                            startActivity(intent);
-                        }
+                    .setPositiveButton("Chart", (dialog, id1) -> {
+                        Intent intent = new Intent(Payment_Summarization_TariffWise.this, Payment_Summarization_Chart.class);
+                        intent.putExtra("SINGLE_MONTH",getSetValues.getSingle_month());
+                        intent.putExtra("DATE_CHECK", getSetValues.getDates_equal());
+                        intent.putExtra("mylist", payment_summarization_arraylist);
+                        startActivity(intent);
                     })
-                    .setNegativeButton("Report", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Intent intent = new Intent(Payment_Summarization_TariffWise.this, Payment_Summarization_Overall_Report.class);
-                            intent.putExtra("DATE_CHECK", getSetValues.getDates_equal());
-                            intent.putExtra("mylist", payment_summarization_arraylist);
-                            startActivity(intent);
-                        }
+                    .setNegativeButton("Report", (dialog, id12) -> {
+                        Intent intent = new Intent(Payment_Summarization_TariffWise.this, Payment_Summarization_Overall_Report.class);
+                        intent.putExtra("SINGLE_MONTH",getSetValues.getSingle_month());
+                        intent.putExtra("DATE_CHECK", getSetValues.getDates_equal());
+                        intent.putExtra("mylist", payment_summarization_arraylist);
+                        startActivity(intent);
                     })
-                    .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            builder.setCancelable(true);
-                        }
-                    });
+                    .setNeutralButton("Cancel", (dialog, which) -> builder.setCancelable(true));
             AlertDialog alert = builder.create();
             alert.show();
         }
@@ -296,7 +344,7 @@ public class Payment_Summarization_TariffWise extends AppCompatActivity implemen
         //setting zone spinner
     }
 
-    private void populate_zone_spinner(String company){
+    private void populate_zone_spinner(String company) {
         zone_list.clear();
         Cursor zone_data = databasehelper.getZone_details(company);
         if (zone_data.getCount() > 0) {
@@ -459,18 +507,15 @@ public class Payment_Summarization_TariffWise extends AppCompatActivity implemen
                         if (!TextUtils.isEmpty(sub_division)) {
                             if (!TextUtils.isEmpty(tariff)) {
                                 if (!TextUtils.isEmpty(from_edit.getText().toString())) {
-                                    if (!TextUtils.isEmpty(to_edit.getText().toString())) {
-                                        if (!TextUtils.isEmpty(acc_status)) {
-                                            if (!TextUtils.isEmpty(billed_status)) {
-                                                functionCall.setProgressDialog(progressDialog, "Fetching Data", "Please Wait");
-                                                SendingData.Get_payment_summarization_tariffwise_value get_payment_summarization_tariffwise_value = sendingData.new Get_payment_summarization_tariffwise_value(handler, payment_summarization_arraylist, getSetValues);
-                                                get_payment_summarization_tariffwise_value.execute(from_edit.getText().toString(), to_edit.getText().toString(), sub_division, tariff, company, zone, circle, division, acc_status, billed_status);
-                                            } else
-                                                functionCall.setSnackBar(Payment_Summarization_TariffWise.this, root_layout, "Please select Billed_Status!!");
+                                    if (!TextUtils.isEmpty(acc_status)) {
+                                        if (!TextUtils.isEmpty(billed_status)) {
+                                            functionCall.setProgressDialog(progressDialog, "Fetching Data", "Please Wait");
+                                            SendingData.Get_payment_summarization_tariffwise_value get_payment_summarization_tariffwise_value = sendingData.new Get_payment_summarization_tariffwise_value(handler, payment_summarization_arraylist, getSetValues);
+                                            get_payment_summarization_tariffwise_value.execute(from_edit.getText().toString(), to_edit.getText().toString(), sub_division, tariff, company, zone, circle, division, acc_status, billed_status);
                                         } else
-                                            functionCall.setSnackBar(Payment_Summarization_TariffWise.this, root_layout, "Please select Acc_Status!!");
+                                            functionCall.setSnackBar(Payment_Summarization_TariffWise.this, root_layout, "Please select Billed_Status!!");
                                     } else
-                                        functionCall.setSnackBar(Payment_Summarization_TariffWise.this, root_layout, "Please select To Date!!");
+                                        functionCall.setSnackBar(Payment_Summarization_TariffWise.this, root_layout, "Please select Acc_Status!!");
                                 } else
                                     functionCall.setSnackBar(Payment_Summarization_TariffWise.this, root_layout, "Please select From Date!!");
                             } else

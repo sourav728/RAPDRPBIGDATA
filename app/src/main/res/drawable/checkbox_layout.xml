@@ -1,7 +1,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:drawable="@drawable/unchecked"
+    <item android:drawable="@drawable/action_cross2"
         android:state_checked="false"/>
-    <item android:drawable="@drawable/checked"
+    <item android:drawable="@drawable/action_cross"
         android:state_checked="true"/>
-    <item android:drawable="@drawable/unchecked"/>
+    <item android:drawable="@drawable/action_cross2"/>
 </selector>
